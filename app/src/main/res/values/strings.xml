@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PeriodicTable</string>
+    <string name="title_activity_element_info">ElementInfoActivity</string>
 </resources>
