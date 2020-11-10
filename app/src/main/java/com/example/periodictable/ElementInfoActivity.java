@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.TextView;
 
 public class ElementInfoActivity extends AppCompatActivity {
 
@@ -19,7 +20,30 @@ public class ElementInfoActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Bundle b = getIntent().getExtras();
+
+        setTitle(b.getString("name"));
+
+        TextView edt = (TextView)findViewById(R.id.textView_sym);
+        edt.setText(b.getString("symbol"));
+
+        edt = (TextView)findViewById(R.id.textView_num);
+        edt.setText(b.getString("atomicNumber"));
+
+        edt = (TextView)findViewById(R.id.textView_mass);
+        edt.setText(b.getString("atomicMass"));
+
+        edt = (TextView)findViewById(R.id.textView_type);
+        edt.setText(b.getString("type"));
+
+        edt = (TextView)findViewById(R.id.textView_state);
+        edt.setText(b.getString("defaultState"));
+
+        edt = (TextView)findViewById(R.id.textView_config);
+        edt.setText(b.getString("elecConfig"));
+
         FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setImageResource(android.R.drawable.ic_menu_share);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
