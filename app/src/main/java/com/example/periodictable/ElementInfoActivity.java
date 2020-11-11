@@ -1,5 +1,6 @@
 package com.example.periodictable;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,7 +21,7 @@ public class ElementInfoActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Bundle b = getIntent().getExtras();
+        final Bundle b = getIntent().getExtras();
 
         setTitle(b.getString("name"));
 
@@ -34,10 +35,10 @@ public class ElementInfoActivity extends AppCompatActivity {
         edt.setText(b.getString("atomicMass"));
 
         edt = (TextView)findViewById(R.id.textView_type);
-        edt.setText(b.getString("type"));
+        edt.setText(Utils.firstUpperCase(b.getString("type")));
 
         edt = (TextView)findViewById(R.id.textView_state);
-        edt.setText(b.getString("defaultState"));
+        edt.setText(Utils.firstUpperCase(b.getString("defaultState")));
 
         edt = (TextView)findViewById(R.id.textView_config);
         edt.setText(b.getString("elecConfig"));
@@ -47,8 +48,13 @@ public class ElementInfoActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "WIP", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "https://ca.wikipedia.org/wiki/" + b.getString("name"));
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
             }
         });
     }
