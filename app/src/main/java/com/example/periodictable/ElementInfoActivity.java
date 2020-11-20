@@ -3,6 +3,7 @@ package com.example.periodictable;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.periodictable.game.GameActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -57,6 +58,13 @@ public class ElementInfoActivity extends AppCompatActivity {
                 startActivity(shareIntent);
             }
         });
-    }
 
+        findViewById(R.id.btn_start_game).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 }

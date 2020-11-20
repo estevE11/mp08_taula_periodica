@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">PeriodicTable</string>
     <string name="title_activity_element_info">ElementInfoActivity</string>
+
+    <string name="title_activity_game">GameActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="btn_start_game">Posa\'t a prova!</string>
+    <string name="btn_submit_answer">Confirmar reposta</string>
 </resources>
